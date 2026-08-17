@@ -16,6 +16,7 @@ export const apps: PortfolioApp[] = [
     description:
       "Log workouts, track progress, and build routines that actually stick.",
     status: "live",
+    href: "https://studio--studio-9772986985-4b343.us-central1.hosted.app/",
     stack: ["Next.js", "TypeScript", "Firebase"],
   },
   {
