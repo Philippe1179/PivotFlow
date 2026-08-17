@@ -29,9 +29,12 @@ export const apps: PortfolioApp[] = [
     stack: ["Next.js", "TypeScript", "Firebase"],
   },
   {
-    name: "Next build",
-    tagline: "Slot reserved",
-    description: "The third app in the portfolio — concept still taking shape.",
-    status: "tbd",
+    name: "PickleLeague",
+    tagline: "Pickleball league management",
+    description:
+      "Add players, record scores, and track standings, with a guest demo mode to try it before you register.",
+    status: "live",
+    href: "https://pickleballapp-6983f.web.app/",
+    stack: ["Expo", "Firebase"],
   },
 ];
