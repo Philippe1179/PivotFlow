@@ -10,10 +10,10 @@ export default function AppsGrid() {
       <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
         <Reveal className="max-w-2xl">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-brass">
-            Portfolio
+            01 — Portfolio
           </p>
           <h2 className="mt-4 font-display text-3xl tracking-tight text-ivory sm:text-4xl">
-            Apps we&apos;ve shipped
+            Apps we’ve shipped
           </h2>
           <p className="mt-4 text-ivory/70">
             Each one built, shipped, and maintained by PivotFlow — proof

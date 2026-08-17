@@ -21,6 +21,11 @@ body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+::selection {
+  background-color: var(--color-brass);
+  color: var(--color-ink);
+}
+
 /* Dial needle: settles into its resting angle on mount. Each Dial instance
    sets --needle-rest inline; direction/reduced-motion handled here once. */
 .dial-needle {
