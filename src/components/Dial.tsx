@@ -1,3 +1,7 @@
+"use client";
+
+import { useCallback, useRef, useState } from "react";
+
 /**
  * The instrument dial: PivotFlow's signature mark. A needle pivots across a
  * semicircular scale between two poles — "Our Apps" and "Your Idea" — and
@@ -12,6 +16,11 @@ const REST_ANGLE = 152;
 // Base needle geometry points "up" (theta = 90). SVG `rotate()` is clockwise
 // on screen, so reaching REST_ANGLE from 90 means rotating by (90 - REST_ANGLE).
 const NEEDLE_ROTATE_DEG = 90 - REST_ANGLE;
+
+// How far the needle may additionally nudge toward the cursor, in degrees,
+// on top of its resting angle. Kept well inside the poles (±90) so it never
+// looks pinned at a stop.
+const MAX_HOVER_NUDGE_DEG = 22;
 
 const TICKS = [0, 30, 60, 90, 120, 150, 180];
 
@@ -30,10 +39,30 @@ function arcPath(cx: number, cy: number, radius: number, fromDeg: number, toDeg:
 interface DialProps {
   variant?: "hero" | "mark";
   className?: string;
+  /** Nudges the needle toward the cursor on hover. Only meaningful for the hero variant. */
+  interactive?: boolean;
 }
 
-export default function Dial({ variant = "hero", className }: DialProps) {
+export default function Dial({ variant = "hero", className, interactive = false }: DialProps) {
   const isMark = variant === "mark";
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [hoverOffset, setHoverOffset] = useState(0);
+
+  const handlePointerMove = useCallback(
+    (event: React.PointerEvent<SVGSVGElement>) => {
+      if (!interactive || !svgRef.current) return;
+      const rect = svgRef.current.getBoundingClientRect();
+      if (rect.width === 0) return;
+      const relX = Math.min(1, Math.max(0, (event.clientX - rect.left) / rect.width));
+      setHoverOffset((relX - 0.5) * 2 * MAX_HOVER_NUDGE_DEG);
+    },
+    [interactive]
+  );
+
+  const handlePointerLeave = useCallback(() => {
+    if (!interactive) return;
+    setHoverOffset(0);
+  }, [interactive]);
 
   const cx = isMark ? 24 : 125;
   const cy = isMark ? 27 : 155;
@@ -44,10 +73,17 @@ export default function Dial({ variant = "hero", className }: DialProps) {
     "--needle-rest": `${NEEDLE_ROTATE_DEG}deg`,
   } as React.CSSProperties;
 
+  const hoverStyle = {
+    "--hover-offset": `${hoverOffset}deg`,
+  } as React.CSSProperties;
+
   return (
     <svg
+      ref={svgRef}
       viewBox={isMark ? "0 0 48 42" : "0 0 250 200"}
       className={className}
+      onPointerMove={interactive ? handlePointerMove : undefined}
+      onPointerLeave={interactive ? handlePointerLeave : undefined}
       {...(isMark
         ? { "aria-hidden": true }
         : {
@@ -95,11 +131,13 @@ export default function Dial({ variant = "hero", className }: DialProps) {
 
       <g transform={`translate(${cx} ${cy})`}>
         <g className="dial-needle" style={needleStyle}>
-          <path
-            d={`M ${-needleLen * 0.07} ${needleLen * 0.14} L 0 ${-needleLen} L ${needleLen * 0.07} ${needleLen * 0.14} Z`}
-            fill="var(--color-brass)"
-          />
-          <circle cx={0} cy={needleLen * 0.16} r={isMark ? 1.5 : 3} fill="var(--color-brass)" opacity={0.6} />
+          <g className="dial-needle-hover" style={hoverStyle}>
+            <path
+              d={`M ${-needleLen * 0.07} ${needleLen * 0.14} L 0 ${-needleLen} L ${needleLen * 0.07} ${needleLen * 0.14} Z`}
+              fill="var(--color-brass)"
+            />
+            <circle cx={0} cy={needleLen * 0.16} r={isMark ? 1.5 : 3} fill="var(--color-brass)" opacity={0.6} />
+          </g>
         </g>
         <circle
           r={isMark ? 3 : 6}

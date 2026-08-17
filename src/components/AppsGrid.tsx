@@ -1,4 +1,5 @@
 import { apps, type AppStatus, type PortfolioApp } from "@/lib/apps";
+import Reveal from "./Reveal";
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2 focus-visible:ring-offset-ink";
@@ -7,7 +8,7 @@ export default function AppsGrid() {
   return (
     <section id="apps" className="scroll-mt-24 border-b border-ivory/10">
       <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-28">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-brass">
             Portfolio
           </p>
@@ -18,11 +19,13 @@ export default function AppsGrid() {
             Each one built, shipped, and maintained by PivotFlow — proof
             before pitch.
           </p>
-        </div>
+        </Reveal>
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {apps.map((app) => (
+          {apps.map((app, index) => (
             <li key={app.name}>
-              <AppCard app={app} />
+              <Reveal className="h-full" delayMs={index * 120}>
+                <AppCard app={app} />
+              </Reveal>
             </li>
           ))}
         </ul>
@@ -32,7 +35,7 @@ export default function AppsGrid() {
 }
 
 function AppCard({ app }: { app: PortfolioApp }) {
-  const cardClasses = `flex h-full flex-col rounded-2xl border p-6 transition-colors ${
+  const cardClasses = `flex h-full flex-col rounded-2xl border p-6 transition duration-300 ${
     app.status === "tbd"
       ? "border-dashed border-ivory/15 bg-panel/50"
       : "border-ivory/10 bg-panel"
@@ -79,7 +82,7 @@ function AppCard({ app }: { app: PortfolioApp }) {
         href={app.href}
         target="_blank"
         rel="noopener noreferrer"
-        className={`group ${cardClasses} hover:border-brass/50 ${FOCUS_RING}`}
+        className={`group ${cardClasses} hover:-translate-y-1 hover:border-brass/50 hover:shadow-[0_18px_40px_-20px_rgba(200,155,60,0.35)] active:translate-y-0 active:scale-[0.99] ${FOCUS_RING}`}
       >
         {content}
       </a>
@@ -93,7 +96,10 @@ function StatusBadge({ status }: { status: AppStatus }) {
   if (status === "live") {
     return (
       <span className="inline-flex shrink-0 items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-live">
-        <span className="h-1.5 w-1.5 rounded-full bg-live" aria-hidden />
+        <span className="relative flex h-1.5 w-1.5">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-live opacity-75" />
+          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-live" />
+        </span>
         Live
       </span>
     );

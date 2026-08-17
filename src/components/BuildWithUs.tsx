@@ -1,10 +1,12 @@
+import Reveal from "./Reveal";
+
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2 focus-visible:ring-offset-ink";
 
 export default function BuildWithUs() {
   return (
     <section id="build-with-us" className="scroll-mt-24">
-      <div className="mx-auto max-w-3xl px-6 py-20 text-center sm:px-8 sm:py-24">
+      <Reveal className="mx-auto max-w-3xl px-6 py-20 text-center sm:px-8 sm:py-24">
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-brass">
           Custom builds
         </p>
@@ -17,11 +19,11 @@ export default function BuildWithUs() {
         </p>
         <a
           href="#contact"
-          className={`mt-8 inline-flex items-center justify-center rounded-full border border-ivory/25 px-6 py-3 font-mono text-sm uppercase tracking-wider text-ivory transition-colors hover:border-brass hover:text-brass ${FOCUS_RING}`}
+          className={`mt-8 inline-flex items-center justify-center rounded-full border border-ivory/25 px-6 py-3 font-mono text-sm uppercase tracking-wider text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-brass hover:text-brass active:translate-y-0 active:scale-95 ${FOCUS_RING}`}
         >
           Let&apos;s talk
         </a>
-      </div>
+      </Reveal>
     </section>
   );
 }

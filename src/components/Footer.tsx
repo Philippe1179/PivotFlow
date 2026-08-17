@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 // Placeholder inbox — swap for the real address once one exists.
 const CONTACT_EMAIL = "hello@pivotflow.dev";
 
@@ -9,7 +11,7 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="scroll-mt-24 border-t border-ivory/10">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-12 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-left">
+      <Reveal className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-12 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-left">
         <div className="flex items-center gap-2 font-display text-ivory">
           <span>PivotFlow LLC</span>
           <span className="text-ivory/40">·</span>
@@ -21,7 +23,7 @@ export default function Footer() {
         >
           {CONTACT_EMAIL}
         </a>
-      </div>
+      </Reveal>
     </footer>
   );
 }

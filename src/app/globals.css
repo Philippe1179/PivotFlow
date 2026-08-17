@@ -47,3 +47,47 @@ body {
     transform: rotate(var(--needle-rest));
   }
 }
+
+/* Needle hover nudge: layered on top of dial-needle's own rotation, driven
+   live by pointer position (see Dial.tsx). No competing animation on this
+   element, so JS-driven updates to --hover-offset transition smoothly. */
+.dial-needle-hover {
+  transform: rotate(var(--hover-offset, 0deg));
+  transform-box: view-box;
+  transform-origin: 0px 0px;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dial-needle-hover {
+    transition: none;
+  }
+}
+
+/* Scroll-triggered section entrance (see Reveal.tsx). */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ping {
+    animation: none;
+  }
+}
