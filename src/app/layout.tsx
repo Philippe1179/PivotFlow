@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,6 +23,16 @@ export const metadata: Metadata = {
   title: "PivotFlow",
   description:
     "PivotFlow — a studio building a portfolio of apps, plus custom builds on request.",
+  applicationName: "PivotFlow",
+  appleWebApp: {
+    capable: true,
+    title: "PivotFlow",
+    statusBarStyle: "black-translucent",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#10161F",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
