@@ -4,9 +4,9 @@ import Dial from "./Dial";
 import { useActiveSection } from "@/lib/useActiveSection";
 
 const NAV_LINKS = [
-  { href: "#apps", label: "Apps", id: "apps" },
-  { href: "#build-with-us", label: "Build with us", id: "build-with-us" },
-  { href: "#contact", label: "Contact", id: "contact" },
+  { href: "/#apps", label: "Apps", id: "apps" },
+  { href: "/#build-with-us", label: "Build with us", id: "build-with-us" },
+  { href: "/#contact", label: "Contact", id: "contact" },
 ];
 
 const SECTION_IDS = NAV_LINKS.map((link) => link.id);
@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-ivory/10 bg-ink/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-8">
-        <a href="#hero" className={`flex items-center gap-2 rounded-sm sm:gap-3 ${FOCUS_RING}`}>
+        <a href="/" className={`flex items-center gap-2 rounded-sm sm:gap-3 ${FOCUS_RING}`}>
           <Dial variant="mark" className="h-7 w-7 shrink-0 text-ivory sm:h-8 sm:w-8" />
           <span className="font-display text-base tracking-tight text-ivory sm:text-lg">
             PivotFlow
