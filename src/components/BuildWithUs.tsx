@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Reveal from "./Reveal";
 
 const FOCUS_RING =
@@ -17,12 +18,12 @@ export default function BuildWithUs() {
           Outside of our own portfolio, we take on a limited number of custom
           builds — same team, same process, applied to your idea.
         </p>
-        <a
-          href="#contact"
+        <Link
+          href="/contact"
           className={`mt-8 inline-flex items-center justify-center rounded-full border border-ivory/25 px-6 py-3 font-mono text-sm uppercase tracking-wider text-ivory transition duration-200 hover:-translate-y-0.5 hover:border-brass hover:text-brass active:translate-y-0 active:scale-95 ${FOCUS_RING}`}
         >
           Let’s talk
-        </a>
+        </Link>
       </Reveal>
     </section>
   );

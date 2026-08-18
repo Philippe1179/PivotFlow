@@ -9,7 +9,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer id="contact" className="scroll-mt-24 border-t border-ivory/10">
+    <footer className="border-t border-ivory/10">
       <Reveal className="mx-auto flex max-w-6xl flex-col items-center gap-4 px-6 py-12 text-center sm:flex-row sm:justify-between sm:px-8 sm:text-left">
         <div className="flex items-center gap-2 font-display text-ivory">
           <span>PivotFlow Labs LLC</span>
