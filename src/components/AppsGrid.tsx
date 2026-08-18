@@ -56,9 +56,6 @@ function AppCard({ app }: { app: PortfolioApp }) {
         <p className="mt-4 flex-1 text-sm leading-relaxed text-ivory/70">
           {app.description}
         </p>
-        <div className="mt-5">
-          <PlatformBadges platforms={app.platforms} size="sm" />
-        </div>
         {app.stack && (
           <ul className="mt-5 flex flex-wrap gap-2">
             {app.stack.map((tech) => (
@@ -78,6 +75,10 @@ function AppCard({ app }: { app: PortfolioApp }) {
           </span>
         </span>
       </Link>
+
+      <div className="mt-5">
+        <PlatformBadges platforms={app.platforms} size="sm" />
+      </div>
 
       {app.href && (
         <a
