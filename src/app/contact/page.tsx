@@ -3,7 +3,7 @@ import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Have an app you want built? Get in touch with PivotFlow.",
+  description: "Have an app you want built? Get in touch with PivotFlow Labs.",
   alternates: { canonical: "/contact" },
 };
 

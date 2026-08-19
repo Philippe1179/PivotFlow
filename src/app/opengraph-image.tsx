@@ -3,7 +3,7 @@ import { appIconMark } from "@/lib/app-icon";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "PivotFlow — a studio building a portfolio of apps, plus custom builds on request.";
+export const alt = "PivotFlow Labs — a studio building a portfolio of apps, plus custom builds on request.";
 
 export default function OpengraphImage() {
   return new ImageResponse(
@@ -30,7 +30,7 @@ export default function OpengraphImage() {
             letterSpacing: "-0.02em",
           }}
         >
-          PivotFlow
+          PivotFlow Labs
         </div>
         <div
           style={{
