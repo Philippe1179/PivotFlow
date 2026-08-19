@@ -27,7 +27,7 @@ export default function Hero() {
             We build apps. Then we help you build yours.
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-ivory/70">
-            PivotFlow ships its own portfolio of apps first, then takes on a
+            PivotFlow Labs ships its own portfolio of apps first, then takes on a
             select number of custom builds for clients who want that same
             craft applied to their idea.
           </p>

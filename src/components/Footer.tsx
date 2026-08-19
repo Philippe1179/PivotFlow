@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="flex flex-col items-center sm:items-start">
             <div className="flex items-center gap-2 font-display text-ivory">
               <Dial variant="mark" className="h-6 w-6 shrink-0 text-ivory" />
-              <span>PivotFlow</span>
+              <span>PivotFlow Labs</span>
             </div>
             <p className="mt-3 max-w-xs text-sm text-ivory/60">
               A studio building a portfolio of apps, plus custom builds on
