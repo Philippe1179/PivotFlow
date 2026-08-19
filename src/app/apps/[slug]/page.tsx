@@ -20,7 +20,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const app = apps.find((a) => a.slug === slug);
   if (!app) return {};
   return {
-    title: `${app.name} — PivotFlow`,
+    // Bare name only — the root layout's title template supplies the site suffix.
+    title: app.name,
     description: app.description,
   };
 }
