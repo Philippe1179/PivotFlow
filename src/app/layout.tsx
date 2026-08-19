@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -19,15 +21,34 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const SITE_URL = "https://pivotflowlabs.com";
+const SITE_DESCRIPTION =
+  "PivotFlow — a studio building a portfolio of apps, plus custom builds on request.";
+
 export const metadata: Metadata = {
-  title: "PivotFlow",
-  description:
-    "PivotFlow — a studio building a portfolio of apps, plus custom builds on request.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "PivotFlow",
+    template: "%s — PivotFlow",
+  },
+  description: SITE_DESCRIPTION,
   applicationName: "PivotFlow",
   appleWebApp: {
     capable: true,
     title: "PivotFlow",
     statusBarStyle: "black-translucent",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "PivotFlow",
+    title: "PivotFlow",
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PivotFlow",
+    description: SITE_DESCRIPTION,
   },
 };
 
@@ -42,7 +63,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${spaceGrotesk.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col bg-ink text-ivory">
-        {children}
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );
