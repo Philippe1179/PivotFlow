@@ -12,7 +12,7 @@ export default function ContactPage() {
     <section className="border-b border-ivory/10">
       <div className="mx-auto max-w-xl px-6 py-20 sm:px-8 sm:py-28">
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-brass">
-          03 — Contact
+          04 — Contact
         </p>
         <h1 className="mt-4 font-display text-3xl tracking-tight text-ivory sm:text-4xl">
           Let’s talk

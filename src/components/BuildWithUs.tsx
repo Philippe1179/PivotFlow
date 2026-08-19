@@ -9,7 +9,7 @@ export default function BuildWithUs() {
     <section id="build-with-us" className="scroll-mt-24">
       <Reveal className="mx-auto max-w-3xl px-6 py-20 text-center sm:px-8 sm:py-24">
         <p className="font-mono text-xs uppercase tracking-[0.3em] text-brass">
-          02 — Custom builds
+          03 — Custom builds
         </p>
         <h2 className="mt-4 font-display text-2xl tracking-tight text-ivory sm:text-3xl">
           Have an app you want built?

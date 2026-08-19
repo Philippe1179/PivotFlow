@@ -1,13 +1,24 @@
 import Dial from "./Dial";
 import Reveal from "./Reveal";
+import { apps } from "@/lib/apps";
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-brass focus-visible:ring-offset-2 focus-visible:ring-offset-ink";
 
+const LIVE_COUNT = apps.filter((app) => app.status === "live").length;
+const STACK = Array.from(new Set(apps.flatMap((app) => app.stack ?? [])));
+
 export default function Hero() {
   return (
-    <section id="hero" className="scroll-mt-24 border-b border-ivory/10">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:py-32">
+    <section
+      id="hero"
+      className="relative scroll-mt-24 overflow-hidden border-b border-ivory/10"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-20 bg-[radial-gradient(circle,rgba(237,231,218,0.06)_1px,transparent_1px)] bg-[length:28px_28px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]"
+      />
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:px-8 sm:py-28 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:py-36">
         <Reveal className="max-w-xl">
           <p className="font-mono text-xs uppercase tracking-[0.3em] text-brass">
             PivotFlow Labs LLC
@@ -34,16 +45,27 @@ export default function Hero() {
               Have an idea?
             </a>
           </div>
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs uppercase tracking-wider text-ivory/50">
+            <span className="inline-flex items-center gap-1.5 text-live">
+              <span className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-live opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-live" />
+              </span>
+              {LIVE_COUNT} apps live
+            </span>
+            <span aria-hidden className="h-3 w-px bg-ivory/15" />
+            <span>{STACK.join(" · ")}</span>
+          </div>
         </Reveal>
         <Reveal delayMs={150} className="relative flex items-center justify-center">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(closest-side,rgba(200,155,60,0.18),transparent_70%)] blur-3xl"
+            className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(closest-side,rgba(200,155,60,0.22),transparent_70%)] blur-3xl"
           />
           <Dial
             variant="hero"
             interactive
-            className="h-auto w-full max-w-md text-ivory"
+            className="h-auto w-full max-w-lg text-ivory"
           />
         </Reveal>
       </div>
