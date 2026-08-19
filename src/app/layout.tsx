@@ -21,15 +21,34 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
+const SITE_URL = "https://pivotflowlabs.com";
+const SITE_DESCRIPTION =
+  "PivotFlow — a studio building a portfolio of apps, plus custom builds on request.";
+
 export const metadata: Metadata = {
-  title: "PivotFlow",
-  description:
-    "PivotFlow — a studio building a portfolio of apps, plus custom builds on request.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "PivotFlow",
+    template: "%s — PivotFlow",
+  },
+  description: SITE_DESCRIPTION,
   applicationName: "PivotFlow",
   appleWebApp: {
     capable: true,
     title: "PivotFlow",
     statusBarStyle: "black-translucent",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: "PivotFlow",
+    title: "PivotFlow",
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PivotFlow",
+    description: SITE_DESCRIPTION,
   },
 };
 

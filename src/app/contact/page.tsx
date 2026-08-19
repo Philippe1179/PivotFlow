@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact — PivotFlow",
+  title: "Contact",
   description: "Have an app you want built? Get in touch with PivotFlow.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

@@ -136,6 +136,10 @@ export default function ContactForm() {
       >
         {status === "submitting" ? "Sending…" : "Send message"}
       </button>
+
+      <p className="text-xs text-ivory/40">
+        We’ll only use this to reply to you — never shared, never sold.
+      </p>
     </form>
   );
 }
